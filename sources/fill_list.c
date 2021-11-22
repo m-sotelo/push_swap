@@ -6,10 +6,11 @@
 /*   By: msotelo- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 18:09:12 by msotelo-          #+#    #+#             */
-/*   Updated: 2021/11/15 15:00:15 by msotelo-         ###   ########.fr       */
+/*   Updated: 2021/11/22 18:48:36 by msotelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
+
 void	free_aux(char **aux)
 {
 	int	i;
@@ -76,5 +77,6 @@ int	fill_list(int argc, char **argv, t_struct *list)
 		free_aux(aux);
 		i++;
 	}
+	malloc_redo(list);
 	return (1);
 }

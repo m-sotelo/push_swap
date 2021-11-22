@@ -6,7 +6,7 @@
 /*   By: msotelo- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 16:22:46 by msotelo-          #+#    #+#             */
-/*   Updated: 2021/11/16 16:44:01 by msotelo-         ###   ########.fr       */
+/*   Updated: 2021/11/22 18:48:01 by msotelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PUSH_SWAP_H
@@ -35,8 +35,20 @@ int		check_numbers(t_struct *list);
 void	push_a(t_struct *list);
 void	push_b(t_struct *list);
 void	print_list(t_struct *list);
-void	map_list(t_struct *list, int pos, int *k);
+void	map_list(t_struct *list, int pos, int *k, t_struct *aux);
 void	ft_strdup_struct(t_struct *list, t_struct *aux);
+void	map_list_2(t_struct *list, int *k);
+void	swap_a(t_struct *list);
+void	swap_b(t_struct *list);
+void	swap_swap(t_struct *list);
+void	rotate_a(t_struct *list);
+void	rotate_b(t_struct *list);
+void	rotate_rotate(t_struct *list);
+void	reverse_rotate_a(t_struct *list);
+void	reverse_rotate_b(t_struct *list);
+void	reverse_reverse(t_struct *list);
+void	init_list(t_struct *list);
+void	malloc_redo(t_struct *list);
 #endif
 
 

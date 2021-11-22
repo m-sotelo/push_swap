@@ -4,7 +4,11 @@ LIBFT_NAME = libft.a
 SRCS =  ./sources/push_swap.c \
 		./sources/fill_list.c \
 		./sources/print_list.c \
-		./sources/push.c
+		./sources/push.c \
+		./sources/swap.c \
+		./sources/rotate.c \
+		./sources/reverse_rotate.c \
+		./sources/map.c
 
 OBJS = ${SRCS:.c=.o}
 
