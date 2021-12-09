@@ -6,7 +6,7 @@
 /*   By: msotelo- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 18:35:56 by msotelo-          #+#    #+#             */
-/*   Updated: 2021/11/22 18:40:13 by msotelo-         ###   ########.fr       */
+/*   Updated: 2021/12/09 14:41:42 by msotelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -17,6 +17,7 @@ void	ft_strdup_struct(t_struct *list, t_struct *aux)
 
 	i = 0;
 	aux->a = (int *)malloc(sizeof(int) * list->index_a);
+	aux->b = (int *)malloc(sizeof(int) * list->index_a);
 	while (i < list->index_a)
 	{
 		aux->a[i] = list->a[i];
@@ -80,7 +81,7 @@ void	map_list(t_struct *list, int pos, int *k, t_struct *aux)
 	aux->index_a = aux->index_a - 1;
 	if(pos == (list->index_a - 1))
 	{
-		free (aux->a);
+		free_list(aux);
 		map_list_2(list, k);
 		return ;
 	}

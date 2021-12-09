@@ -8,7 +8,8 @@ SRCS =  ./sources/push_swap.c \
 		./sources/swap.c \
 		./sources/rotate.c \
 		./sources/reverse_rotate.c \
-		./sources/map.c
+		./sources/map.c \
+		./sources/order.c
 
 OBJS = ${SRCS:.c=.o}
 

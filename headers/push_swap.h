@@ -6,7 +6,7 @@
 /*   By: msotelo- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 16:22:46 by msotelo-          #+#    #+#             */
-/*   Updated: 2021/11/22 18:48:01 by msotelo-         ###   ########.fr       */
+/*   Updated: 2021/12/09 19:34:26 by msotelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PUSH_SWAP_H
@@ -48,7 +48,13 @@ void	reverse_rotate_a(t_struct *list);
 void	reverse_rotate_b(t_struct *list);
 void	reverse_reverse(t_struct *list);
 void	init_list(t_struct *list);
-void	malloc_redo(t_struct *list);
+void	order_size(t_struct *list);
+void	algo_2_a(t_struct *list);
+void	algo_3_a(t_struct *list);
+void	algo_2_b(t_struct *list);
+void	algo_3_b(t_struct *list);
+void	algo_4(t_struct *list);
+void	algo_5(t_struct *list);
 #endif
 
 
