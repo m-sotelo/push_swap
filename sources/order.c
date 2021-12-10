@@ -6,7 +6,7 @@
 /*   By: msotelo- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 14:53:40 by msotelo-          #+#    #+#             */
-/*   Updated: 2021/12/09 19:34:11 by msotelo-         ###   ########.fr       */
+/*   Updated: 2021/12/10 16:10:53 by msotelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -24,9 +24,9 @@ void	order_size(t_struct *list)
 		algo_4(list);
 	else if (i == 5)
 		algo_5(list);
-/*	else if (i > 5 && i <= 100)
+	else if (i > 5 && i <= 100)
 		algo_small(list);
-	else if (i > 100)
+/*	else if (i > 100)
 		algo_big(list);*/
 	return;
 }

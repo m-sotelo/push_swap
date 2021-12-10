@@ -6,7 +6,7 @@
 /*   By: msotelo- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 16:22:46 by msotelo-          #+#    #+#             */
-/*   Updated: 2021/12/09 19:34:26 by msotelo-         ###   ########.fr       */
+/*   Updated: 2021/12/10 16:32:47 by msotelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PUSH_SWAP_H
@@ -55,6 +55,10 @@ void	algo_2_b(t_struct *list);
 void	algo_3_b(t_struct *list);
 void	algo_4(t_struct *list);
 void	algo_5(t_struct *list);
+void	algo_small(t_struct *list);
+void	start_solve(t_struct *list, int check_size, int i);
+int		find_pivot(t_struct *list, int i);
+int		check_side(t_struct *list, int i, int pivot);
 #endif
 
 
