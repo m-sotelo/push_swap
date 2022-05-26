@@ -6,7 +6,7 @@
 /*   By: msotelo- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 16:29:24 by msotelo-          #+#    #+#             */
-/*   Updated: 2021/12/10 16:36:41 by msotelo-         ###   ########.fr       */
+/*   Updated: 2022/05/26 16:43:19 by msotelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -63,7 +63,11 @@ int	main(int argc, char **argv)
 	check = fill_list(argc, argv, &list);
 	check2 = check_numbers(&list);
 	if (check == 0 || check2 == 0)
+	{
 		write(1,"ERROR",5);
+		free_list(&list);
+		exit(0);
+	}
 	k = (int *)malloc(sizeof(int) * list.index_a);
 	map_list(&list, 0, k, &aux);
 	print_list(&list);
