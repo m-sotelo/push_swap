@@ -6,7 +6,7 @@
 /*   By: msotelo- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 16:29:24 by msotelo-          #+#    #+#             */
-/*   Updated: 2022/05/26 16:43:19 by msotelo-         ###   ########.fr       */
+/*   Updated: 2022/06/22 20:14:54 by msotelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -71,8 +71,9 @@ int	main(int argc, char **argv)
 	k = (int *)malloc(sizeof(int) * list.index_a);
 	map_list(&list, 0, k, &aux);
 	print_list(&list);
+	remalloc(&list);
 	order_size(&list);
-	print_list(&list);
+//	print_list(&list);
 	free_list(&list);
 	free(k);
 //	atexit(leaks);

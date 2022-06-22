@@ -1,35 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_list.c                                       :+:      :+:    :+:   */
+/*   remalloc.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msotelo- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/15 14:50:53 by msotelo-          #+#    #+#             */
-/*   Updated: 2022/06/03 18:33:56 by msotelo-         ###   ########.fr       */
+/*   Created: 2022/06/13 19:09:19 by msotelo-          #+#    #+#             */
+/*   Updated: 2022/06/22 19:36:26 by msotelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
 
-void print_list(t_struct *list)
+void	remalloc(t_struct *list)
 {
+	int	*aux_a;
 	int	i;
-	int	j;
-	
+
 	i = 0;
-	j = 0;
-	printf("LISTA A:\n");
-	while(i < list->index_a)
+	aux_a = (int *)malloc(sizeof(int) * list->index_a);
+	while (i < list->index_a)
 	{
-		printf("Este es el elemento %i de la lista A:%i\n",i,list->a[i]);
+		aux_a[i] = list->a[i];
 		i++;
 	}
-	printf("LISTA B:\n");
-	while(j < list->index_b)
+	free(list->a);
+	free(list->b);
+	list->a = malloc(sizeof(int) * list->index_a);
+	list->b = malloc(sizeof(int) * list->index_a);
+	i = 0;
+	while (i < list->index_a)
 	{
-		printf("Este es el elemento %i de la lista B:%i\n",j,list->b[j]);
-		j++;
+		list->a[i] = aux_a[i];
+		i++;
 	}
-	return ;
+	list->max = list->index_a;
+	free (aux_a);
 }
 

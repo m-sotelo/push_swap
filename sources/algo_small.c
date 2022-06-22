@@ -6,112 +6,222 @@
 /*   By: msotelo- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 14:59:09 by msotelo-          #+#    #+#             */
-/*   Updated: 2022/05/26 16:43:26 by msotelo-         ###   ########.fr       */
+/*   Updated: 2022/06/22 20:14:56 by msotelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
 
-int	check_side(t_struct *list, int i, int pivot)
+void	check_pos(t_struct *list, int mid, int num)
 {
-	int	j;
-	int	count;
+	if (num < mid && list->index_b > 1)
+	{
+//		printf("esto es el mid:%i y esto lo que estoy pasando:%i\n", mid, num);
+		rotate_b(list);
+	}
+}
 
-	j = i - 1;
-	count = 0;
-	while (j >= pivot)
+int		aux_len(int *aux)
+{
+	int	x;
+
+	x = 0;
+	while(aux[x])
+		x++;
+	return (x);
+}
+
+void	pusheo(t_struct *list, int i, int *aux, int mid)
+{
+	int	x;
+	int	len;
+
+	len = aux_len(aux);
+	if (i == 0)
 	{
-		if (list->a[j] < (i / 2))
-			count ++;
-		j--;
+		while (1)
+		{
+			x = 0;
+			while (aux[x])
+			{
+//				printf("esto es aux en %i: %i y esto es la lista:%i y esto len:%i\n",x, aux[x], list->a[0], len);
+//				usleep(100000);
+				if (list->a[0] == aux[x])
+				{
+					push_b(list);
+					check_pos(list, mid , list->b[0]);
+					x = 0;
+					len--;
+				}
+				x++;
+			}
+			if (len == 0)
+				break ;
+			reverse_rotate_a(list);
+		}
 	}
-	j--;
-	while (j >= 0)
-	{
-		if (list->a[j] < (i / 2))
- 			count--;
-		j--;
-	}
-	if (count <= 0)
-		return (0);
 	else
-		return (1);
+	{
+		while (1)
+		{
+			x = 0;
+			while (aux[x])
+			{
+//				printf("esto es aux en %i: %i y esto es la lista:%i y esto len:%i\n",x, aux[x], list->a[0], len);
+//				usleep(100000);
+				if (list->a[0] == aux[x])
+				{
+					push_b(list);
+					check_pos(list, mid, list->b[0]);
+					x = 0;
+					len--;
+				}
+				x++;
+			}
+			if (len == 0)
+				break ;
+			rotate_a(list);
+		}
+	}
 }
 
-int	find_pivot(t_struct *list, int i)
+int	first_push(t_struct *list, int mid, int *aux)
 {
-	int	j;
+	int	i;
+	int	x;
+	int	sum;
 
-	j = 0;
-	while ((list->a[j] != (i / 2)))
-		j++;
-	return (j);
-}
-
-void	start_solve(t_struct *list, int check_size, int i)
-{
-	int	chunk_size;
-	int	pivot;
-	int side;
-	int	j;
-	int	check;
-	int	check2;
-
-	chunk_size = 5 * check_size;
-	pivot = find_pivot(list, i);
-	printf("esto es el pivot:%i\n", pivot);
-	side = check_side(list, i, pivot);
-	printf("essto es side:%i\n", side);
-	j = i;
 	i = 0;
-	check = 0;
-	check2 = 0;
-	if (side == 0)
+	sum = 0;
+	while(i <= mid)
 	{
-		while (check == 0)
+		x = 0;
+		while(aux[x]) 
 		{
-			if (list->a[i] < (j / 2))
-				push_b(list);
-			else if (list->a[i] > (j / 2))
-				rotate_a(list);
-			else
-			   check = 1;
+			if (list->a[i] == aux[x])
+				sum++;
+			x++;
 		}
+		i++;;
 	}
-	else
+	while(list->a[i])
 	{
-		while (check == 0)
+		x = 0;
+		while(aux[x]) 
 		{
-			while (list->a[i] != (j / 2) && check2 == 0)
-				rotate_a(list);
-			if (check2 == 0)
-				rotate_a(list);
-			check2 = 1;
-			if (list->a[i] < (j / 2))
-				push_b(list);
-			else if (list->a[i] > (j / 2))
-			   rotate_a(list);
-			else
-				check = 1;
+			if (list->a[i] == aux[x])
+				sum--;
+			x++;
 		}
+		i++;;
 	}
-	return ;
+	if (sum < 0)
+		return (0); //esta en la mitad inferior
+	return (1); //esta en la mitad superior
+}
+
+int	calculate_chunk(t_struct *list)
+{
+	int	i;
+
+	i = list->index_a;
+	if (i > 5 && i < 50)
+		return (5);
+	if (i >= 50 && i < 150)
+		return (10);
+	if (i >= 150 && i < 250)
+		return (15);
+	if (i >= 250 && i < 350)
+		return (20);
+	return (25);
+}
+//		sleep(5);
+
+int *create_ordered_list(t_struct *list, int chunk_size, int chunknum, int *aux) //revisar para equilibrar mas aux un numero menos donde se resta
+                                                                          //o un numero mas donde se suma
+{
+    int i;
+    int x;
+    int j;
+    int k;
+
+    i = list->index_a;
+    j = chunk_size * chunknum;
+    x = 0;
+    k = 0;
+    if (aux == NULL)
+        aux = malloc(sizeof(int) * ((chunk_size * 2) + 1));
+    else
+    {
+        free(aux);
+        aux = malloc(sizeof(int) * ((chunk_size * 2) + 1));
+    }
+    while (x < i)
+    {
+		if (list->a[x] < (list->mid + j) && list->a[x] > (list->mid - j) && (list->a[x] >= 0 && list->a[x] < list->max))
+        {
+//			usleep(100000);
+            aux[k] = list->a[x];
+            k++;
+        }
+        x++;
+    }
+	aux[k] = (int)NULL;
+    return (aux);
+}
+
+int	*last_ordered_list(t_struct *list, int *aux, int chunk_size)
+{
+	int	i;
+	int	x;
+
+	i = list->index_a;
+	x = 0;
+	free(aux);
+	aux = malloc(sizeof(int) * ((chunk_size * 2) + 1));
+	while (i > 0)
+	{
+		aux[x] = list->a[x];
+		x++;
+		i--;
+	}
+	return (aux);
 }
 
 void	algo_small(t_struct *list)
 {
+	int	*nums;
+	int	chunk_size;
+	int	count;
 	int	i;
-	int check_size;
+	int	x;
+	int	k;
 
-	i = list->index_a;
-	check_size = 0;
-	if (i <= 25)
-		check_size = 1;
-	else if (i > 25 && i <= 50)
-		check_size = 2;
-	else if (i > 50 && i <= 75)
-		check_size = 3;
-	else if (i > 75 && i <= 100)
-		check_size = 4;
-	start_solve(list, check_size, i);
-	return ;
+	nums = NULL;
+	x = 1;
+	list->mid = (list->index_a / 2);
+	chunk_size = calculate_chunk(list);
+	count = list->index_a / chunk_size;
+	while (count > 0)
+	{
+		nums = create_ordered_list(list, chunk_size, x, nums);
+		i = first_push(list, list->mid, nums);
+		pusheo(list, i, nums, list->mid);
+		k = 0;
+		/*while (nums[k])
+		{
+			printf("esto es :%i en %i\n", nums[k], k);
+			k++;
+		}*/
+		x++;
+		count--;
+	}
+	nums = last_ordered_list(list, nums, chunk_size);
+	while (nums[k])
+	{
+		sleep(10);
+		printf("esto es :%i en %i\n", nums[k], k);			
+		k++;
+	}
+	i = first_push(list, list->mid, nums);
+	pusheo(list, i, nums, list->mid);
 }

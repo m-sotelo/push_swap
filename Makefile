@@ -10,7 +10,8 @@ SRCS =  ./sources/push_swap.c \
 		./sources/reverse_rotate.c \
 		./sources/map.c \
 		./sources/order.c \
-		./sources/algo_small.c
+		./sources/algo_small.c \
+		./sources/remalloc.c
 
 OBJS = ${SRCS:.c=.o}
 
@@ -20,15 +21,15 @@ EXE_DIR = ./
 
 CC := cc
 GCC := gcc
-CFLAGS := -Wall -Werror -Wextra
+CFLAGS := -Wall -Werror -Wextra -fsanitize=address -g3
 MV := mv -f
 RM := rm -f
 
 %.o: %.c
-	$(CC)  $(CFLAGS) -c $< -I $(INC_DIR) -o $@ 
+	$(GCC)  $(CFLAGS) -c $< -I $(INC_DIR) -o $@ 
 
 $(NAME): $(LIBFT_DIR)$(LIBFT_NAME) $(OBJS)
-	$(CC) -o $(NAME)  $^ -I $(INC_DIR)
+	$(GCC) $(CFLAGS) -o $(NAME)  $^ -I $(INC_DIR)
 
 $(LIBFT_DIR)$(LIBFT_NAME): $(LIBFT_DIR)
 	make -C $(LIBFT_DIR)

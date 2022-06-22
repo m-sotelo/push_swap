@@ -6,7 +6,7 @@
 /*   By: msotelo- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 16:23:53 by msotelo-          #+#    #+#             */
-/*   Updated: 2021/11/22 16:39:39 by msotelo-         ###   ########.fr       */
+/*   Updated: 2022/06/13 20:32:49 by msotelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -19,6 +19,7 @@ void	rotate_a(t_struct *list)
 	j = 0;
 	if (!list->a)
 		return ;
+//	usleep(100000);
 	write (1, "ra\n", 3);
 	aux = list->a[0];
 	while (j < list->index_a)
