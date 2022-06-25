@@ -6,7 +6,7 @@
 /*   By: msotelo- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 16:22:46 by msotelo-          #+#    #+#             */
-/*   Updated: 2022/06/22 19:35:39 by msotelo-         ###   ########.fr       */
+/*   Updated: 2022/06/25 20:02:42 by msotelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PUSH_SWAP_H
@@ -49,7 +49,7 @@ void	rotate_rotate(t_struct *list);
 void	reverse_rotate_a(t_struct *list);
 void	reverse_rotate_b(t_struct *list);
 void	reverse_reverse(t_struct *list);
-void	init_list(t_struct *list);
+void	init_list(t_struct *list, int x);
 void	order_size(t_struct *list);
 void	algo_2_a(t_struct *list);
 void	algo_3_a(t_struct *list);
