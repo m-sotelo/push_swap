@@ -6,53 +6,12 @@
 /*   By: msotelo- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 16:29:24 by msotelo-          #+#    #+#             */
-/*   Updated: 2022/06/25 20:02:37 by msotelo-         ###   ########.fr       */
+/*   Updated: 2022/07/12 21:06:09 by msotelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
 
-void	write_null(t_struct *list)
-{
-	int	i;
-
-	i = list->index_a;
-	list->a[i] = (int)NULL;
-	list->b[i] = (int)NULL;
-}
-
-int	first_check(int argc, char **argv)
-{
-	char	**tmp;
-	int		len;
-
-	if (argc == 1)
-	{
-		write(1,"ERROR",5);
-		exit(EXIT_FAILURE);
-	}
-	if (argc == 2)
-	{
-		len = 0;
-		tmp = ft_split(argv[1], ' ');
-		while(tmp[len])
-			len++;
-		free(tmp);
-	}
-	else
-		len = argc - 1;
-	return(len);
-}
-
-void	init_list(t_struct *list, int x)
-{
-	list->a = malloc(sizeof(int) * (x + 1));
-	list->b = malloc(sizeof(int) * (x + 1));
-	list->index_a = 0;
-	list->index_b = 0;
-	return ;
-}
-
-int		check_numbers(t_struct *list)
+int	check_numbers(t_struct *list)
 {
 	int	i;
 	int	j;
@@ -88,29 +47,28 @@ int	main(int argc, char **argv)
 {
 	int			check;
 	int			check2;
-	int			*k;
 	int			x;
-	t_struct 	list;
-	t_struct	aux;
+	int			i;
+	t_struct	list;
 
 	x = first_check(argc, argv);
+	i = 0;
 	init_list(&list, x);
-	check = fill_list(argc, argv, &list);
+	check = fill_list(argc, argv, &list, i);
 	check2 = check_numbers(&list);
 	if (check == 0 || check2 == 0)
 	{
-		write(1,"ERROR",5);
+		write(1, "ERROR", 5);
 		free_list(&list);
 		exit(0);
 	}
 	write_null(&list);
-	k = (int *)malloc(sizeof(int) * list.index_a);
-	map_list(&list, 0, k, &aux);
-	print_list(&list);
+//	print_list(&list);
+	map_list(&list);
+//	print_list(&list);
 	order_size(&list);
-	print_list(&list);
+//	print_list(&list);
 	free_list(&list);
-	free(k);
 //	atexit(leaks);
 	return (0);
 }

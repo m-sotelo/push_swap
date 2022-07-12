@@ -6,7 +6,7 @@
 /*   By: msotelo- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 13:32:42 by msotelo-          #+#    #+#             */
-/*   Updated: 2022/06/13 19:06:40 by msotelo-         ###   ########.fr       */
+/*   Updated: 2022/07/12 19:06:09 by msotelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -18,7 +18,7 @@ void	push_a(t_struct *list)
 
 	i = list->index_a - 1;
 	j = 0;
-	if(!list->b)
+	if (!list->b)
 		return ;
 	write(1, "pa\n", 3);
 	while (i >= 0)
@@ -32,7 +32,7 @@ void	push_a(t_struct *list)
 	while (j < list->index_b)
 	{
 		list->b[j] = list->b[j + 1];
-	   	j++;	
+		j++;
 	}
 	list->b[j] = -1;
 	return ;
@@ -45,7 +45,7 @@ void	push_b(t_struct *list)
 
 	i = list->index_b - 1;
 	j = 0;
-	if(!list->a)
+	if (!list->a)
 		return ;
 	write(1, "pb\n", 3);
 	while (i >= 0)
@@ -59,9 +59,8 @@ void	push_b(t_struct *list)
 	while (j < list->index_a)
 	{
 		list->a[j] = list->a[j + 1];
-	   	j++;	
+		j++;
 	}
 	list->a[j] = -1;
 	return ;
 }
-

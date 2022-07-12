@@ -10,7 +10,12 @@ SRCS =  ./sources/push_swap.c \
 		./sources/reverse_rotate.c \
 		./sources/map.c \
 		./sources/order.c \
-		./sources/algo_small.c
+		./sources/algo_small.c \
+		./sources/algo_small_back.c	\
+		./sources/algo_pusheo.c	\
+		./sources/first_last_push.c	\
+		./sources/init_list.c	\
+		./sources/order_2.c
 
 OBJS = ${SRCS:.c=.o}
 
