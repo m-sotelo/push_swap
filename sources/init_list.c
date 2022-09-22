@@ -6,7 +6,7 @@
 /*   By: msotelo- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 20:14:58 by msotelo-          #+#    #+#             */
-/*   Updated: 2022/07/12 20:17:15 by msotelo-         ###   ########.fr       */
+/*   Updated: 2022/09/23 01:11:48 by msotelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -26,17 +26,14 @@ int	first_check(int argc, char **argv)
 	int		len;
 
 	if (argc == 1)
-	{
-		write(1, "ERROR", 5);
 		exit(EXIT_FAILURE);
-	}
 	if (argc == 2)
 	{
 		len = 0;
 		tmp = ft_split(argv[1], ' ');
 		while (tmp[len])
 			len++;
-		free(tmp);
+		free_aux(tmp);
 	}
 	else
 		len = argc - 1;

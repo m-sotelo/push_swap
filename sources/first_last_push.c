@@ -6,7 +6,7 @@
 /*   By: msotelo- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 20:07:23 by msotelo-          #+#    #+#             */
-/*   Updated: 2022/07/12 20:12:28 by msotelo-         ###   ########.fr       */
+/*   Updated: 2022/09/23 00:53:49 by msotelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -20,7 +20,7 @@ void	last_pusheo(t_struct *list, int mid)
 	}
 }
 
-int	first_push_aux(t_struct *list, int i, int *aux, int sum)
+int	pos_calculator(t_struct *list, int i, int *aux)
 {
 	int	x;
 
@@ -28,10 +28,10 @@ int	first_push_aux(t_struct *list, int i, int *aux, int sum)
 	while (aux[x] != -1)
 	{
 		if (list->a[i] == aux[x] && aux[x] >= 0)
-			sum++;
+			return (i);
 		x++;
 	}
-	return (sum);
+	return (-1);
 }
 
 //0 = mitad inferior, 1 = mitad superior
@@ -39,21 +39,27 @@ int	first_push_aux(t_struct *list, int i, int *aux, int sum)
 int	first_push(t_struct *list, int mid, int *aux)
 {
 	int	i;
-	int	sum;
+	int	k;
 
-	i = 0;
-	sum = 0;
-	while (i <= mid)
+	i = -1;
+	list->pos1 = -1;
+	list->pos2 = -1;
+	k = list->index_a;
+	while (i++ <= mid)
 	{
-		sum = first_push_aux(list, i, aux, sum);
-		i++;
+		list->pos1 = pos_calculator(list, i, aux);
+		if (list->pos1 != -1)
+			break ;
 	}
-	while (i < list->index_a)
+	while (k > i)
 	{
-		sum = first_push_aux(list, i, aux, sum);
-		i++;
+		list->pos2 = pos_calculator(list, k, aux);
+		if (list->pos2 != -1)
+			break ;
+		k--;
 	}
-	if (sum < 0)
+	list->pos2 = (list->index_a - list->pos2 - 1);
+	if (list->pos2 < list->pos1)
 		return (0);
 	return (1);
 }

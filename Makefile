@@ -25,7 +25,7 @@ EXE_DIR = ./
 
 CC := cc
 GCC := gcc
-CFLAGS := -Wall -Werror -Wextra -fsanitize=address -g3
+CFLAGS := -Wall -Werror -Wextra #-fsanitize=address -g3
 MV := mv -f
 RM := rm -f
 

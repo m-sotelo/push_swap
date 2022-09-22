@@ -6,7 +6,7 @@
 /*   By: msotelo- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 16:22:46 by msotelo-          #+#    #+#             */
-/*   Updated: 2022/07/12 21:06:18 by msotelo-         ###   ########.fr       */
+/*   Updated: 2022/09/19 18:36:46 by msotelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PUSH_SWAP_H
@@ -27,6 +27,8 @@ typedef struct s_struct
 	int	mid;
 	int	max;
 	int	check;
+	int	pos1;
+	int	pos2;
 }	t_struct;
 
 /*-------------------------FUNCTIONS-------------------------*/
@@ -61,11 +63,12 @@ void	algo_5(t_struct *list);
 void	algo_small(t_struct *list);
 void	remalloc(t_struct *list);
 void	algo_small_back(t_struct *list);
-void	pusheo(t_struct *list, int i, int *aux, int mid);
-void	check_pos(t_struct *list, int mid, int num);
+void	pusheo(t_struct *list, int i, int mid);
+int		check_pos(t_struct *list, int mid, int num);
 int		first_push(t_struct *list, int mid, int *aux);
 void	last_pusheo(t_struct *list, int mid);
 void	write_null(t_struct *list);
 int		first_check(int argc, char **argv);
 void	init_list(t_struct *list, int x);
+int		aux_len(int *aux);
 #endif

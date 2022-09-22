@@ -6,7 +6,7 @@
 /*   By: msotelo- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 16:29:24 by msotelo-          #+#    #+#             */
-/*   Updated: 2022/07/12 21:06:09 by msotelo-         ###   ########.fr       */
+/*   Updated: 2022/09/23 01:11:45 by msotelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -65,7 +65,7 @@ int	main(int argc, char **argv)
 	write_null(&list);
 //	print_list(&list);
 	map_list(&list);
-//	print_list(&list);
+//	print_list(&list); // funcion de si esta ordenado no ordenar
 	order_size(&list);
 //	print_list(&list);
 	free_list(&list);
