@@ -6,10 +6,24 @@
 /*   By: msotelo- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 16:29:24 by msotelo-          #+#    #+#             */
-/*   Updated: 2022/09/23 01:11:45 by msotelo-         ###   ########.fr       */
+/*   Updated: 2022/09/23 02:08:58 by msotelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
+
+int	check_order(t_struct *list)
+{
+	int	i;
+
+	i = 0;
+	while (list->a[i])
+	{
+		if (list->a[i] > list->a[i + 1])
+			return (1);
+		i++;
+	}
+	return (0);
+}
 
 int	check_numbers(t_struct *list)
 {
@@ -49,6 +63,7 @@ int	main(int argc, char **argv)
 	int			check2;
 	int			x;
 	int			i;
+	int			order;
 	t_struct	list;
 
 	x = first_check(argc, argv);
@@ -65,10 +80,14 @@ int	main(int argc, char **argv)
 	write_null(&list);
 //	print_list(&list);
 	map_list(&list);
-//	print_list(&list); // funcion de si esta ordenado no ordenar
-	order_size(&list);
 //	print_list(&list);
-	free_list(&list);
+	order = check_order(&list);
+	if (order == 1)
+	{
+		order_size(&list);
+	//	print_list(&list);
+		free_list(&list);
+	}
 //	atexit(leaks);
 	return (0);
 }
