@@ -6,7 +6,7 @@
 /*   By: msotelo- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 16:22:46 by msotelo-          #+#    #+#             */
-/*   Updated: 2022/09/19 18:36:46 by msotelo-         ###   ########.fr       */
+/*   Updated: 2022/10/06 15:00:05 by msotelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PUSH_SWAP_H
@@ -29,6 +29,7 @@ typedef struct s_struct
 	int	check;
 	int	pos1;
 	int	pos2;
+	int	order;
 }	t_struct;
 
 /*-------------------------FUNCTIONS-------------------------*/

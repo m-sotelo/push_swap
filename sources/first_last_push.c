@@ -6,7 +6,7 @@
 /*   By: msotelo- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 20:07:23 by msotelo-          #+#    #+#             */
-/*   Updated: 2022/09/23 00:53:49 by msotelo-         ###   ########.fr       */
+/*   Updated: 2022/10/03 16:23:15 by msotelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -28,7 +28,9 @@ int	pos_calculator(t_struct *list, int i, int *aux)
 	while (aux[x] != -1)
 	{
 		if (list->a[i] == aux[x] && aux[x] >= 0)
+		{
 			return (i);
+		}
 		x++;
 	}
 	return (-1);
@@ -44,7 +46,7 @@ int	first_push(t_struct *list, int mid, int *aux)
 	i = -1;
 	list->pos1 = -1;
 	list->pos2 = -1;
-	k = list->index_a;
+	k = list->index_a - 1;
 	while (i++ <= mid)
 	{
 		list->pos1 = pos_calculator(list, i, aux);

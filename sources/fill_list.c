@@ -6,7 +6,7 @@
 /*   By: msotelo- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 18:09:12 by msotelo-          #+#    #+#             */
-/*   Updated: 2022/09/23 00:53:46 by msotelo-         ###   ########.fr       */
+/*   Updated: 2022/10/17 19:34:40 by msotelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -77,11 +77,25 @@ int	check_entry2(char **argv)
 	return (1);
 }
 
+int	fill_list_aux(t_struct *list, char **aux, int j, int k)
+{
+	int	s;
+
+	s = check_entry(aux);
+	if (s == 0)
+		return (0);
+	list->a[j] = ft_atoi(aux[k]);
+	if (list->a[j] == -1)
+		return (0);
+	list->index_a++;
+	return (1);
+}
+
 int	fill_list(int argc, char **argv, t_struct *list, int i)
 {
 	int		j;
 	int		k;
-	int		s;
+	int		ret;
 	char	**aux;
 
 	j = 0;
@@ -95,11 +109,10 @@ int	fill_list(int argc, char **argv, t_struct *list, int i)
 		aux = ft_split(argv[i], ' ');
 		while (aux[++k])
 		{
-			s = check_entry(aux);
-			if (s == 0)
+			ret = fill_list_aux(list, aux, j, k);
+			if (ret == 0)
 				return (0);
-			list->a[j++] = ft_atoi(aux[k]);
-			list->index_a++;
+			j++;
 		}
 		free_aux(aux);
 	}

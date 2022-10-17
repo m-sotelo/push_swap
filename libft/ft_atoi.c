@@ -6,10 +6,11 @@
 /*   By: msotelo- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/14 14:10:04 by msotelo-          #+#    #+#             */
-/*   Updated: 2021/11/10 19:48:33 by msotelo-         ###   ########.fr       */
+/*   Updated: 2022/10/06 14:38:46 by msotelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
+#include <stdio.h>
 
 static int	subatoi(const char *str, int i, int sign)
 {
