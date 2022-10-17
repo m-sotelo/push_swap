@@ -6,7 +6,7 @@
 /*   By: msotelo- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 16:22:46 by msotelo-          #+#    #+#             */
-/*   Updated: 2022/10/06 15:00:05 by msotelo-         ###   ########.fr       */
+/*   Updated: 2022/10/17 21:09:25 by msotelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PUSH_SWAP_H
@@ -40,7 +40,6 @@ int		fill_list(int argc, char **argv, t_struct *list, int check);
 int		check_numbers(t_struct *list);
 void	push_a(t_struct *list);
 void	push_b(t_struct *list);
-void	print_list(t_struct *list);
 void	map_list(t_struct *list);
 void	ft_strdup_struct(t_struct *list, t_struct *aux);
 void	map_list_2(t_struct *list, int *k);
