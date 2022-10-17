@@ -6,7 +6,7 @@
 /*   By: msotelo- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 20:14:58 by msotelo-          #+#    #+#             */
-/*   Updated: 2022/10/17 19:32:59 by msotelo-         ###   ########.fr       */
+/*   Updated: 2022/10/17 21:05:01 by msotelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -73,27 +73,6 @@ int	first_check(int argc, char **argv)
 		len = first_check_2(argv, tmp, j, check);
 	return (len);
 }
-
-/*
-int	first_check(int argc, char **argv)
-{
-	char	**tmp;
-	int		len;
-
-	if (argc == 1)
-		exit(EXIT_FAILURE);
-	if (argc == 2)
-	{
-		len = 0;
-		tmp = ft_split(argv[1], ' ');
-		while (tmp[len])
-			len++;
-		free_aux(tmp);
-	}
-	else
-		len = argc - 1;
-	return (len);
-}*/
 
 void	init_list(t_struct *list, int x)
 {
