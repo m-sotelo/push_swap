@@ -6,7 +6,7 @@
 /*   By: msotelo- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 18:09:12 by msotelo-          #+#    #+#             */
-/*   Updated: 2022/10/17 19:36:21 by msotelo-         ###   ########.fr       */
+/*   Updated: 2022/10/20 02:25:29 by msotelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -57,11 +57,11 @@ int	check_entry2(char **argv)
 	size_t	count2;
 
 	i = -1;
-	count1 = 0;
-	count2 = 0;
 	while (argv[++i])
 	{
 		j = -1;
+		count1 = 0;
+		count2 = 0;
 		while (argv[i][++j])
 		{
 			if (argv[i][j] == '\0')
