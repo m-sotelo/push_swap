@@ -6,7 +6,7 @@
 /*   By: msotelo- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 20:14:58 by msotelo-          #+#    #+#             */
-/*   Updated: 2022/10/17 21:05:01 by msotelo-         ###   ########.fr       */
+/*   Updated: 2022/10/20 02:00:30 by msotelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -20,30 +20,40 @@ void	write_null(t_struct *list)
 	list->b[i] = (int) NULL;
 }
 
-int	first_check_2(char **argv, char **tmp, int j, int check)
+int	aux_aux(int k, int len, char **tmp, char *argv)
+{
+	tmp = ft_split(argv, ' ');
+	while (tmp[k] != NULL)
+	{
+		k++;
+		len++;
+	}
+	free_aux(tmp);
+	return (len);
+}
+
+int	first_check_2(char **argv, char **tmp, int j, int argc)
 {
 	int	k;
 	int	i;
 	int	len;
+	int	check;
 
 	len = 0;
-	while (argv[j++])
+	while (j < argc)
 	{
-		i = -1;
+		i = 0;
 		check = 0;
-		while (argv[j][i++] != '\0')
+		while ((argv[j][i] != '\0') && (argv[j] != NULL))
 		{
-			k = -1;
+			k = 0;
 			if (argv[j][i] == ' ')
 				check = 1;
 			if ((argv[j][i] >= 49 && argv[j][i] <= 57) && check == 1)
-			{
-				tmp = ft_split(argv[j], ' ');
-				while (tmp[k++])
-					len++;
-				free_aux(tmp);
-			}
+				len = aux_aux(k, len, tmp, argv[j]);
+			i++;
 		}
+		j++;
 		len++;
 	}
 	return (len);
@@ -54,12 +64,10 @@ int	first_check(int argc, char **argv)
 	char	**tmp;
 	int		len;
 	int		j;
-	int		check;
 
-	j = -1;
+	j = 0;
 	len = 0;
 	tmp = NULL;
-	check = 0;
 	if (argc == 1)
 		exit(EXIT_FAILURE);
 	if (argc == 2)
@@ -70,7 +78,7 @@ int	first_check(int argc, char **argv)
 		free_aux(tmp);
 	}
 	else
-		len = first_check_2(argv, tmp, j, check);
+		len = first_check_2(argv, tmp, j, argc);
 	return (len);
 }
 

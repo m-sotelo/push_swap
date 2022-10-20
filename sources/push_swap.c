@@ -6,7 +6,7 @@
 /*   By: msotelo- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 16:29:24 by msotelo-          #+#    #+#             */
-/*   Updated: 2022/10/17 19:33:01 by msotelo-         ###   ########.fr       */
+/*   Updated: 2022/10/20 02:00:26 by msotelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -61,8 +61,7 @@ void	leaks(void)
 
 int	main(int argc, char **argv)
 {
-	int			check;
-	int			check2;
+	int			check[2];
 	int			x;
 	int			i;
 	t_struct	list;
@@ -70,9 +69,9 @@ int	main(int argc, char **argv)
 	x = first_check(argc, argv);
 	i = 0;
 	init_list(&list, x);
-	check = fill_list(argc, argv, &list, i);
-	check2 = check_numbers(&list);
-	if (check == 0 || check2 == 0)
+	check[0] = fill_list(argc, argv, &list, i);
+	check[1] = check_numbers(&list);
+	if (check[0] == 0 || check[1] == 0)
 	{
 		write(1, "ERROR", 5);
 		free_list(&list);
