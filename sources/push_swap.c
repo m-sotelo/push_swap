@@ -6,7 +6,7 @@
 /*   By: msotelo- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 16:29:24 by msotelo-          #+#    #+#             */
-/*   Updated: 2022/10/20 02:00:26 by msotelo-         ###   ########.fr       */
+/*   Updated: 2022/10/26 19:27:03 by msotelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -18,10 +18,8 @@ int	check_order(t_struct *list)
 	i = 0;
 	while (i < list->index_a)
 	{
-		if (list->a[i] > list->a[i + 1])
-		{
+		if ((list->a[i] > list->a[i + 1]) && ((i + 1) < list->index_a))
 			return (1);
-		}
 		i++;
 	}
 	return (0);
@@ -72,16 +70,15 @@ int	main(int argc, char **argv)
 	check[0] = fill_list(argc, argv, &list, i);
 	check[1] = check_numbers(&list);
 	if (check[0] == 0 || check[1] == 0)
-	{
-		write(1, "ERROR", 5);
-		free_list(&list);
-		exit(0);
-	}
+		aux_error(&list);
 	write_null(&list);
 	map_list(&list);
 	list.order = check_order(&list);
 	if (list.order == 0)
+	{
+		free_list(&list);
 		return (0);
+	}
 	order_size(&list);
 	free_list(&list);
 	return (0);

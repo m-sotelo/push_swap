@@ -14,7 +14,8 @@ SRCS =  ./sources/push_swap.c \
 		./sources/algo_pusheo.c	\
 		./sources/first_last_push.c	\
 		./sources/init_list.c	\
-		./sources/order_2.c
+		./sources/order_2.c \
+		./sources/exit.c
 
 OBJS = ${SRCS:.c=.o}
 

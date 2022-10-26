@@ -6,7 +6,7 @@
 /*   By: msotelo- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 16:22:46 by msotelo-          #+#    #+#             */
-/*   Updated: 2022/10/19 22:05:31 by msotelo-         ###   ########.fr       */
+/*   Updated: 2022/10/26 19:00:26 by msotelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PUSH_SWAP_H
@@ -35,6 +35,7 @@ typedef struct s_struct
 
 /*-------------------------FUNCTIONS-------------------------*/
 
+void	aux_error(t_struct *list);
 void	free_list(t_struct *list);
 void	free_aux(char **aux);
 int		fill_list(int argc, char **argv, t_struct *list, int check);

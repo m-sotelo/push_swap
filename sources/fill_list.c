@@ -6,7 +6,7 @@
 /*   By: msotelo- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 18:09:12 by msotelo-          #+#    #+#             */
-/*   Updated: 2022/10/20 02:25:29 by msotelo-         ###   ########.fr       */
+/*   Updated: 2022/10/26 19:25:13 by msotelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -68,8 +68,6 @@ int	check_entry2(char **argv)
 				count1++;
 			else if (argv[i][j] == ' ')
 				count2++;
-			else if (argv[i][j + 1] == '+' || argv[i][j + 1] == '-')
-				return (0);
 		}
 		if (count1 == ft_strlen(argv[i]) || count2 == ft_strlen(argv[i]))
 			return (0);
@@ -83,10 +81,16 @@ int	fill_list_aux(t_struct *list, char **aux, int j, int k)
 
 	s = check_entry(aux);
 	if (s == 0)
+	{
+		free_aux(aux);
 		return (0);
+	}
 	list->a[j] = ft_atoi(aux[k]);
 	if (list->a[j] == -1)
+	{
+		free_aux(aux);
 		return (0);
+	}
 	list->index_a++;
 	return (1);
 }
